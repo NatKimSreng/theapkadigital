@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coming Soon — TheApKa Digital</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@300;400;700&family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dark: #8B6914;
+    --deep: #0D0A05;
+    --deep2: #1A1408;
+    --deep3: #241C0C;
+    --cream: #F5EDD6;
+    --cream2: #EAD9B0;
+    --red: #8B1A1A;
+    --red-light: #B22222;
+    --text: #F5EDD6;
+    --text-muted: #C4A96E;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--deep);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* ── Background: Khmer geometric pattern ── */
+  .bg-pattern {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .bg-pattern svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.07;
+  }
+
+  /* ── Radial glow ── */
+  .bg-glow {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201,168,76,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 50% 100%, rgba(139,26,26,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* ── Top & bottom temple border ── */
+  .temple-border-top,
+  .temple-border-bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    height: 120px;
+  }
+  .temple-border-top { top: 0; }
+  .temple-border-bottom { bottom: 0; transform: scaleY(-1); }
+
+  /* ── Main content ── */
+  .content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    max-width: 700px;
+    width: 100%;
+  }
+
+  /* ── Angkor lotus ornament ── */
+  .ornament-top {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  /* ── Logo / site name ── */
+  .site-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin: 1.25rem auto;
+    width: 280px;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dark), transparent);
+  }
+  .divider-diamond {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ── Main headline ── */
+  .headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    font-weight: 500;
+    line-height: 1.08;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .headline-khmer {
+    font-family: 'Hanuman', serif;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  /* ── Body text ── */
+  .body-text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    max-width: 440px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+  }
+
+  /* ── Email form ── */
+  .email-form {
+    display: flex;
+    gap: 0;
+    max-width: 420px;
+    margin: 0 auto 2.5rem;
+    border: 1px solid var(--gold-dark);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .email-form input {
+    flex: 1;
+    background: rgba(201,168,76,0.05);
+    border: none;
+    outline: none;
+    padding: 0.85rem 1.25rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: var(--cream);
+    min-width: 0;
+  }
+
+  .email-form input::placeholder {
+    color: rgba(196,169,110,0.5);
+  }
+
+  .email-form button {
+    background: var(--gold);
+    border: none;
+    cursor: pointer;
+    padding: 0.85rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--deep);
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .email-form button:hover {
+    background: var(--gold-light);
+  }
+
+  /* ── Social row ── */
+  .social-row {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 3rem;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+
+  .social-link:hover { color: var(--gold); }
+
+  .social-icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+
+  /* ── Contact email ── */
+  .contact-line {
+    font-size: 0.75rem;
+    color: rgba(196,169,110,0.6);
+    letter-spacing: 0.08em;
+  }
+
+  .contact-line a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  /* ── Ornament bottom ── */
+  .ornament-bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    opacity: 0.6;
+  }
+
+  /* ── Success message ── */
+  .success-msg {
+    display: none;
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    letter-spacing: 0.06em;
+    margin-top: 0.75rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- Background Khmer pattern -->
+<div class="bg-pattern">
+  <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="kp" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+        <!-- Khmer-inspired lotus grid tile -->
+        <rect width="80" height="80" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
+        <!-- Inner diamond -->
+        <polygon points="40,4 76,40 40,76 4,40" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
+        <!-- Inner square rotated -->
+        <rect x="24" y="24" width="32" height="32" fill="none" stroke="#C9A84C" stroke-width="0.4" transform="rotate(45 40 40)"/>
+        <!-- Center dot -->
+        <circle cx="40" cy="40" r="2.5" fill="#C9A84C" opacity="0.8"/>
+        <!-- Corner petals -->
+        <path d="M0,0 Q10,10 0,20" fill="none" stroke="#C9A84C" stroke-width="0.3"/>
+        <path d="M80,0 Q70,10 80,20" fill="none" stroke="#C9A84C" stroke-width="0.3"/>
+        <path d="M0,80 Q10,70 0,60" fill="none" stroke="#C9A84C" stroke-width="0.3"/>
+        <path d="M80,80 Q70,70 80,60" fill="none" stroke="#C9A84C" stroke-width="0.3"/>
+        <!-- Cardinal petal tips -->
+        <path d="M40,0 Q46,12 40,20 Q34,12 40,0" fill="none" stroke="#C9A84C" stroke-width="0.4"/>
+        <path d="M40,80 Q46,68 40,60 Q34,68 40,80" fill="none" stroke="#C9A84C" stroke-width="0.4"/>
+        <path d="M0,40 Q12,46 20,40 Q12,34 0,40" fill="none" stroke="#C9A84C" stroke-width="0.4"/>
+        <path d="M80,40 Q68,46 60,40 Q68,34 80,40" fill="none" stroke="#C9A84C" stroke-width="0.4"/>
+      </pattern>
+    </defs>
+    <rect width="800" height="800" fill="url(#kp)"/>
+  </svg>
+</div>
+
+<!-- Radial glow -->
+<div class="bg-glow"></div>
+
+<!-- Temple silhouette top border -->
+<div class="temple-border-top">
+  <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:100%;">
+    <defs>
+      <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1A1408"/>
+        <stop offset="100%" stop-color="transparent"/>
+      </linearGradient>
+    </defs>
+    <!-- Temple towers silhouette -->
+    <path d="M0,120 L0,80 L80,80 L80,50 L100,50 L100,30 L110,30 L110,20 L120,20 L120,30 L130,30 L130,50 L150,50 L150,80 
+             L200,80 L200,60 L215,60 L215,40 L225,40 L225,25 L235,25 L235,15 L245,15 L245,8 L255,8 L255,15 L265,15 
+             L265,25 L275,25 L275,40 L285,40 L285,60 L300,60 L300,80
+             L380,80 L380,55 L395,55 L395,35 L405,35 L405,20 L415,20 L415,10 L420,10 L420,5 L425,5 L425,10 
+             L430,10 L430,20 L440,20 L440,35 L450,35 L450,55 L465,55 L465,80
+             L540,80 L540,65 L550,65 L550,50 L560,50 L560,40 L565,40 L565,35 L570,35 L570,40 L575,40 L575,50 
+             L585,50 L585,65 L595,65 L595,80
+             L660,80 L660,60 L675,60 L675,40 L685,40 L685,25 L695,25 L695,15 L705,15 L705,8 L715,8 L715,15 
+             L725,15 L725,25 L735,25 L735,40 L745,40 L745,60 L760,60 L760,80
+             L840,80 L840,55 L855,55 L855,35 L865,35 L865,20 L875,20 L875,10 L880,10 L880,5 L885,5 L885,10 
+             L890,10 L890,20 L900,20 L900,35 L910,35 L910,55 L925,55 L925,80
+             L1000,80 L1000,65 L1010,65 L1010,50 L1020,50 L1020,40 L1025,40 L1025,35 L1030,35 L1030,40 L1035,40 
+             L1035,50 L1045,50 L1045,65 L1055,65 L1055,80
+             L1130,80 L1130,60 L1145,60 L1145,40 L1155,40 L1155,25 L1165,25 L1165,15 L1175,15 L1175,8 L1185,8 
+             L1185,15 L1195,15 L1195,25 L1205,25 L1205,40 L1215,40 L1215,60 L1230,60 L1230,80
+             L1300,80 L1300,50 L1315,50 L1315,30 L1325,30 L1325,20 L1335,20 L1335,30 L1345,30 L1345,50 L1360,50 L1360,80
+             L1440,80 L1440,120 Z" fill="url(#tg)" opacity="0.9"/>
+    <!-- Gold line at base of temples -->
+    <line x1="0" y1="80" x2="1440" y2="80" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+  </svg>
+</div>
+
+<!-- Temple border bottom -->
+<div class="temple-border-bottom">
+  <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:100%;">
+    <defs>
+      <linearGradient id="tg2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1A1408"/>
+        <stop offset="100%" stop-color="transparent"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,120 L0,80 L80,80 L80,50 L100,50 L100,30 L110,30 L110,20 L120,20 L120,30 L130,30 L130,50 L150,50 L150,80 
+             L200,80 L200,60 L215,60 L215,40 L225,40 L225,25 L235,25 L235,15 L245,15 L245,8 L255,8 L255,15 L265,15 
+             L265,25 L275,25 L275,40 L285,40 L285,60 L300,60 L300,80
+             L380,80 L380,55 L395,55 L395,35 L405,35 L405,20 L415,20 L415,10 L420,10 L420,5 L425,5 L425,10 
+             L430,10 L430,20 L440,20 L440,35 L450,35 L450,55 L465,55 L465,80
+             L540,80 L540,65 L550,65 L550,50 L560,50 L560,40 L565,40 L565,35 L570,35 L570,40 L575,40 L575,50 
+             L585,50 L585,65 L595,65 L595,80
+             L660,80 L660,60 L675,60 L675,40 L685,40 L685,25 L695,25 L695,15 L705,15 L705,8 L715,8 L715,15 
+             L725,15 L725,25 L735,25 L735,40 L745,40 L745,60 L760,60 L760,80
+             L840,80 L840,55 L855,55 L855,35 L865,35 L865,20 L875,20 L875,10 L880,10 L880,5 L885,5 L885,10 
+             L890,10 L890,20 L900,20 L900,35 L910,35 L910,55 L925,55 L925,80
+             L1000,80 L1000,65 L1010,65 L1010,50 L1020,50 L1020,40 L1025,40 L1025,35 L1030,35 L1030,40 L1035,40 
+             L1035,50 L1045,50 L1045,65 L1055,65 L1055,80
+             L1130,80 L1130,60 L1145,60 L1145,40 L1155,40 L1155,25 L1165,25 L1165,15 L1175,15 L1175,8 L1185,8 
+             L1185,15 L1195,15 L1195,25 L1205,25 L1205,40 L1215,40 L1215,60 L1230,60 L1230,80
+             L1300,80 L1300,50 L1315,50 L1315,30 L1325,30 L1325,20 L1335,20 L1335,30 L1345,30 L1345,50 L1360,50 L1360,80
+             L1440,80 L1440,120 Z" fill="url(#tg2)" opacity="0.9"/>
+    <line x1="0" y1="80" x2="1440" y2="80" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+  </svg>
+</div>
+
+<!-- Main content -->
+<main class="content">
+
+  <!-- Lotus ornament SVG -->
+  <div class="ornament-top">
+    <svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+      <!-- Central lotus -->
+      <path d="M60,70 Q60,45 45,35 Q55,50 60,55 Q65,50 75,35 Q60,45 60,70Z" fill="#C9A84C" opacity="0.9"/>
+      <path d="M60,70 Q60,40 30,28 Q48,48 60,55 Q72,48 90,28 Q60,40 60,70Z" fill="#C9A84C" opacity="0.6"/>
+      <path d="M60,70 Q60,35 15,22 Q44,47 60,55 Q76,47 105,22 Q60,35 60,70Z" fill="#C9A84C" opacity="0.35"/>
+      <!-- Stem -->
+      <line x1="60" y1="70" x2="60" y2="78" stroke="#C9A84C" stroke-width="1.5"/>
+      <!-- Floating petals left -->
+      <path d="M38,58 Q28,48 20,55 Q30,52 38,58Z" fill="#C9A84C" opacity="0.5"/>
+      <path d="M26,50 Q18,38 10,44 Q20,40 26,50Z" fill="#C9A84C" opacity="0.35"/>
+      <!-- Floating petals right -->
+      <path d="M82,58 Q92,48 100,55 Q90,52 82,58Z" fill="#C9A84C" opacity="0.5"/>
+      <path d="M94,50 Q102,38 110,44 Q100,40 94,50Z" fill="#C9A84C" opacity="0.35"/>
+      <!-- Center jewel -->
+      <circle cx="60" cy="56" r="3" fill="#E8C96A"/>
+      <circle cx="60" cy="56" r="1.5" fill="#fff" opacity="0.6"/>
+      <!-- Top decoration -->
+      <line x1="20" y1="18" x2="100" y2="18" stroke="#C9A84C" stroke-width="0.5" opacity="0.5"/>
+      <line x1="30" y1="12" x2="90" y2="12" stroke="#C9A84C" stroke-width="0.5" opacity="0.35"/>
+      <!-- Small diamonds on line -->
+      <rect x="58" y="16" width="4" height="4" transform="rotate(45 60 18)" fill="#C9A84C" opacity="0.8"/>
+      <rect x="28" y="16" width="3" height="3" transform="rotate(45 30 18)" fill="#C9A84C" opacity="0.5"/>
+      <rect x="88" y="16" width="3" height="3" transform="rotate(45 90 18)" fill="#C9A84C" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <!-- Brand name -->
+  <p class="site-name">TheApKa Digital</p>
+
+  <!-- Divider -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- Headlines -->
+  <h1 class="headline">Coming<br>Soon</h1>
+  <span class="headline-khmer">កំពុងរៀបចំ • នឹងមកដល់ឆាប់ៗ</span>
+
+  <!-- Body -->
+  <p class="body-text">
+    Something extraordinary is being crafted for you.<br>
+    A new digital experience rooted in Cambodia — launching soon.
+  </p>
+
+  <!-- Email form -->
+  <form class="email-form" id="notifyForm" onsubmit="handleSubmit(event)">
+    <input type="email" id="emailInput" placeholder="your@email.com" required autocomplete="email">
+    <button type="submit">Notify me</button>
+  </form>
+  <p class="success-msg" id="successMsg">✦ &nbsp; Thank you. We'll be in touch.</p>
+
+  <!-- Divider -->
+  <div class="divider" style="margin-bottom:1.75rem;">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- Social -->
+  <div class="social-row">
+    <a href="mailto:kim@theapkadigital.com" class="social-link">
+      <svg class="social-icon" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      Email
+    </a>
+  </div>
+
+  <!-- Contact -->
+  <p class="contact-line">
+    Questions? <a href="mailto:kim@theapkadigital.com">kim@theapkadigital.com</a>
+  </p>
+
+  <!-- Bottom ornament -->
+  <div class="ornament-bottom">
+    <svg width="200" height="20" viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="10" x2="200" y2="10" stroke="#C9A84C" stroke-width="0.5"/>
+      <rect x="97" y="7" width="6" height="6" transform="rotate(45 100 10)" fill="#C9A84C"/>
+      <rect x="64" y="8" width="4" height="4" transform="rotate(45 66 10)" fill="#C9A84C" opacity="0.6"/>
+      <rect x="130" y="8" width="4" height="4" transform="rotate(45 132 10)" fill="#C9A84C" opacity="0.6"/>
+      <rect x="31" y="9" width="2" height="2" transform="rotate(45 32 10)" fill="#C9A84C" opacity="0.4"/>
+      <rect x="165" y="9" width="2" height="2" transform="rotate(45 166 10)" fill="#C9A84C" opacity="0.4"/>
+    </svg>
+  </div>
+
+</main>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('emailInput').value;
+    if (!email) return;
+    document.getElementById('notifyForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+</body>
+</html>
